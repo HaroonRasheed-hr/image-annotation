@@ -21,10 +21,10 @@ def print_header(text):
 def check_python_version():
     """Check Python version"""
     version = sys.version_info
-    print(f"\n✓ Python {version.major}.{version.minor}.{version.micro}")
+    print(f"\nPython {version.major}.{version.minor}.{version.micro}")
     
     if version.major < 3 or (version.major == 3 and version.minor < 8):
-        print("  ✗ Python 3.8+ required!")
+        print("  Python 3.8+ required!")
         return False
     return True
 
@@ -33,10 +33,10 @@ def check_django():
     """Check Django installation"""
     try:
         import django
-        print(f"✓ Django {django.VERSION[0]}.{django.VERSION[1]}.{django.VERSION[2]}")
+        print(f"Django {django.VERSION[0]}.{django.VERSION[1]}.{django.VERSION[2]}")
         return True
     except ImportError:
-        print("✗ Django not installed")
+        print("Django not installed")
         return False
 
 
@@ -44,10 +44,10 @@ def check_drf():
     """Check Django REST Framework"""
     try:
         import rest_framework
-        print(f"✓ Django REST Framework {rest_framework.__version__}")
+        print(f"Django REST Framework {rest_framework.__version__}")
         return True
     except ImportError:
-        print("✗ Django REST Framework not installed")
+        print("Django REST Framework not installed")
         return False
 
 
@@ -55,10 +55,10 @@ def check_cors():
     """Check django-cors-headers"""
     try:
         import corsheaders
-        print(f"✓ django-cors-headers installed")
+        print(f"django-cors-headers installed")
         return True
     except ImportError:
-        print("✗ django-cors-headers not installed")
+        print("django-cors-headers not installed")
         return False
 
 
@@ -67,10 +67,10 @@ def check_pillow():
     try:
         from PIL import Image
         import PIL
-        print(f"✓ Pillow {PIL.__version__}")
+        print(f"Pillow {PIL.__version__}")
         return True
     except ImportError:
-        print("✗ Pillow not installed")
+        print("Pillow not installed")
         return False
 
 
@@ -79,10 +79,10 @@ def check_database():
     db_path = Path("db.sqlite3")
     if db_path.exists():
         size_mb = db_path.stat().st_size / (1024 * 1024)
-        print(f"✓ Database exists (size: {size_mb:.2f} MB)")
+        print(f"Database exists (size: {size_mb:.2f} MB)")
         return True
     else:
-        print("✗ Database not created yet")
+        print("Database not created yet")
         return False
 
 
@@ -90,10 +90,10 @@ def check_media_dir():
     """Check if media directories exist"""
     media_path = Path("media")
     if media_path.exists():
-        print("✓ Media directory exists")
+        print("Media directory exists")
         return True
     else:
-        print("✗ Media directory not created")
+        print("Media directory not created")
         return False
 
 
@@ -111,9 +111,9 @@ def check_files():
     all_exist = True
     for file in files:
         if Path(file).exists():
-            print(f"  ✓ {file}")
+            print(f"  {file}")
         else:
-            print(f"  ✗ {file} (missing)")
+            print(f"  {file} (missing)")
             all_exist = False
     
     return all_exist
@@ -123,10 +123,10 @@ def check_django_admin():
     """Check Django admin accessibility"""
     try:
         from django.contrib.admin import site
-        print("✓ Django admin available")
+        print("Django admin available")
         return True
     except Exception as e:
-        print(f"✗ Django admin error: {e}")
+        print(f"Django admin error: {e}")
         return False
 
 
@@ -151,14 +151,14 @@ def check_settings():
         
         all_ok = True
         for check, result in checks.items():
-            status = "✓" if result else "✗"
+            status = "" if result else ""
             print(f"  {status} {check}")
             if not result:
                 all_ok = False
         
         return all_ok
     except Exception as e:
-        print(f"✗ Error checking settings: {e}")
+        print(f"Error checking settings: {e}")
         return False
 
 
@@ -182,18 +182,18 @@ def check_models():
         annotation_ok = all(f in annotation_fields for f in required_annotation_fields)
         
         if image_ok:
-            print("  ✓ Image model configured correctly")
+            print("  Image model configured correctly")
         else:
-            print("  ✗ Image model missing fields")
+            print("  Image model missing fields")
         
         if annotation_ok:
-            print("  ✓ Annotation model configured correctly")
+            print("  Annotation model configured correctly")
         else:
-            print("  ✗ Annotation model missing fields")
+            print("  Annotation model missing fields")
         
         return image_ok and annotation_ok
     except Exception as e:
-        print(f"✗ Error checking models: {e}")
+        print(f"Error checking models: {e}")
         return False
 
 
@@ -204,28 +204,28 @@ def main():
     results = {}
     
     # Python checks
-    print("\n▶ Python Environment")
+    print("\nPython Environment")
     results['python'] = check_python_version()
     
     # Package checks
-    print("\n▶ Installed Packages")
+    print("\nInstalled Packages")
     results['django'] = check_django()
     results['drf'] = check_drf()
     results['cors'] = check_cors()
     results['pillow'] = check_pillow()
     
     # Files checks
-    print("\n▶ Project Files")
+    print("\nProject Files")
     results['files'] = check_files()
     
     # Django checks
-    print("\n▶ Django Configuration")
+    print("\nDjango Configuration")
     results['admin'] = check_django_admin()
     results['settings'] = check_settings()
     results['models'] = check_models()
     
     # File system checks
-    print("\n▶ File System")
+    print("\nFile System")
     results['database'] = check_database()
     results['media'] = check_media_dir()
     
@@ -236,7 +236,7 @@ def main():
     passed = sum(1 for v in results.values() if v)
     
     for check, result in results.items():
-        status = "✓ PASS" if result else "✗ FAIL"
+        status = "PASS" if result else "FAIL"
         print(f"{status:8} - {check.replace('_', ' ').title()}")
     
     print(f"\n{'='*60}")
@@ -244,13 +244,13 @@ def main():
     print(f"{'='*60}")
     
     if passed == total:
-        print("\n✓ All checks passed! Backend is ready to run.")
+        print("\nAll checks passed! Backend is ready to run.")
         print("\nStart the server with:")
         print("  python manage.py runserver")
         return 0
     else:
         failed_checks = [k for k, v in results.items() if not v]
-        print(f"\n✗ {len(failed_checks)} check(s) failed:")
+        print(f"\n{len(failed_checks)} check(s) failed:")
         for check in failed_checks:
             print(f"  - {check}")
         print("\nRun setup with:")

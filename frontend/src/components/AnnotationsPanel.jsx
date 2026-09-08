@@ -65,7 +65,7 @@ export default function AnnotationsPanel({ annotations, selectedBoxId, onSelect,
          <div className={styles.jsonSection}>
             <div className={styles.jsonHeader}>
                <span className={styles.jsonLabel}>JSON output</span>
-               <button className={styles.copyBtn} onClick={handleCopy}>{copied ? '✓ Copied' : 'Copy'}</button>
+               <button className={styles.copyBtn} onClick={handleCopy}>{copied ? 'Copied' : 'Copy'}</button>
             </div>
             <pre className={styles.jsonPre}>
                {annotations.length === 0 ? '[ ]' : JSON.stringify(

@@ -44,7 +44,7 @@ export default function ImageSidebar({ images, activeImageId, onSelect, onUpload
                      <div className={styles.thumb}>
                         <img src={img.url} alt={img.name} className={styles.thumbImg} />
                         {boxCount > 0 && <span className={styles.thumbBadge}>{boxCount}</span>}
-                        {isUploading && <span className={styles.uploadingBadge}>⏳</span>}
+                        {isUploading && <span className={styles.uploadingBadge}>Uploading</span>}
                      </div>
                      <div className={styles.itemMeta}>
                         <span className={styles.imgName}>{img.name}</span>

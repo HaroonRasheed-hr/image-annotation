@@ -1,6 +1,6 @@
 # Image Annotator - Complete Documentation
 
-## 📌 Versions
+## Versions
 
 ### Frontend Version
 - **React:** 18.2.0
@@ -13,7 +13,7 @@
 
 ---
 
-## 📦 Dependencies & Versions
+## Dependencies & Versions
 
 ### Frontend Dependencies
 ```json
@@ -47,7 +47,7 @@ python-decouple==3.8
 
 ---
 
-## 🚀 How to Run
+## How to Run
 
 ### Prerequisites
 - **Python 3.8+** installed
@@ -120,7 +120,7 @@ Open browser: `http://localhost:8000`
 
 ---
 
-## 🗄️ Database
+## Database
 
 ### Database Type
 - **SQLite** (default, file-based: `db.sqlite3`)
@@ -175,7 +175,7 @@ python manage.py migrate
 
 ---
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### Base URL
 ```
@@ -376,7 +376,7 @@ Response: {
 
 ---
 
-## 📊 Dataset Structure
+## Dataset Structure
 
 ### YOLO Dataset Generation
 
@@ -432,7 +432,7 @@ python train.py --img 640 --batch 16 --epochs 100 --data /path/to/dataset
 
 ---
 
-## 🎯 Workflow
+## Workflow
 
 ### 1. Upload Images
 ```
@@ -467,7 +467,7 @@ Export `dataset/` folder and use with ML frameworks
 
 ---
 
-## 🔍 Testing
+## Testing
 
 ### Run YOLO Conversion Tests
 ```bash
@@ -475,7 +475,7 @@ cd backend
 python manage.py test annotator.tests.YOLOConverterTestCase -v 2
 ```
 
-**Expected Result:** 9/9 tests passing ✅
+**Expected Result:** 9/9 tests passing
 
 ### Manual API Testing
 
@@ -495,7 +495,7 @@ curl -X POST -H "Content-Type: application/json" \
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 .
@@ -531,7 +531,7 @@ curl -X POST -H "Content-Type: application/json" \
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -563,7 +563,7 @@ backend/frontend/static/        # JS/CSS bundles
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Port Already in Use
 ```bash
@@ -602,7 +602,7 @@ python manage.py collectstatic --noinput
 
 ---
 
-## 📝 Example Usage
+## Example Usage
 
 ### Complete Workflow with curl
 
@@ -633,7 +633,7 @@ curl -X POST -H "Content-Type: application/json" \
 
 ---
 
-## 📞 Support
+## Support
 
 For issues:
 1. Check Django error logs: `python manage.py runserver`
@@ -644,4 +644,4 @@ For issues:
 ---
 
 **Last Updated:** April 3, 2026  
-**Status:** Production Ready ✅
+**Status:** Production Ready

@@ -115,13 +115,13 @@ export default function App() {
                className={`${styles.tabButton} ${activeTab === 'annotate' ? styles.active : ''}`}
                onClick={() => setActiveTab('annotate')}
             >
-               ✏️ Annotate
+               Annotate
             </button>
             <button 
                className={`${styles.tabButton} ${activeTab === 'inference' ? styles.active : ''}`}
                onClick={() => setActiveTab('inference')}
             >
-               🤖 Inference
+               Inference
             </button>
          </div>
       </div>

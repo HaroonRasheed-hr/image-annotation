@@ -173,10 +173,10 @@ Renders the image with bounding boxes using HTML5 Canvas
 
 ### Frontend Usage
 
-1. Switch to the "🤖 Inference" tab in the app
-2. Click "📁 Select Image" to upload an image
+1. Switch to the "Inference" tab in the app
+2. Click "Select Image" to upload an image
 3. Adjust confidence and IOU thresholds as needed
-4. Click "🚀 Run Inference"
+4. Click "Run Inference"
 5. View results with bounding boxes and confidence scores
 
 ### API Usage (cURL Example)
@@ -391,12 +391,12 @@ frontend/src/
 ## Summary
 
 Day 5 implementation provides:
-✓ Production-ready inference service
-✓ RESTful API endpoint
-✓ React UI with real-time visualization
-✓ Comprehensive testing
-✓ Proper error handling
-✓ Clear documentation
+Production-ready inference service
+RESTful API endpoint
+React UI with real-time visualization
+Comprehensive testing
+Proper error handling
+Clear documentation
 
 **Total Implementation:**
 - 1,150+ lines of backend code

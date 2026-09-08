@@ -2,7 +2,7 @@
 
 Comprehensive overview of the Image Annotator system architecture, design patterns, and component interactions.
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -63,7 +63,7 @@ Comprehensive overview of the Image Annotator system architecture, design patter
     └─────────┘        └──────────┘
 ```
 
-## 📁 Directory Structure
+## Directory Structure
 
 ### Root Level
 ```
@@ -153,7 +153,7 @@ image-annotator/
     └── YOLO_TESTING_GUIDE.md
 ```
 
-## 🔄 Data Flow
+## Data Flow
 
 ### Image Upload Flow
 ```
@@ -239,7 +239,7 @@ InferenceViewSet.create()
 Frontend CanvasViewer renders image with boxes
 ```
 
-## 🗂️ Database Schema
+## Database Schema
 
 ### Image Model
 ```
@@ -270,7 +270,7 @@ Annotation
 └── updated_at (DateTimeField)
 ```
 
-## 🔌 Component Interaction
+## Component Interaction
 
 ### Frontend Component Tree
 ```
@@ -314,7 +314,7 @@ App
 - **useCanvas hook**: `scale`, `offset`, canvas state
 - **InferencePanel**: `selectedFile`, `confidence`, `iou`, `results`
 
-## 🔐 Security Architecture
+## Security Architecture
 
 ### API Layer
 - CORS whitelist enforcement
@@ -337,7 +337,7 @@ App
 - HTTPS in production (SECURE_SSL_REDIRECT)
 - Cookie security (HTTPONLY, SECURE, SAMESITE)
 
-## 🚀 Performance Optimizations
+## Performance Optimizations
 
 ### Frontend
 - Vite for fast HMR during development
@@ -356,7 +356,7 @@ App
 - Database query optimization
 - Connection pooling
 
-## 🧪 Testing Architecture
+## Testing Architecture
 
 ### Test Structure
 ```
@@ -374,7 +374,7 @@ annotator/tests.py
 - API endpoints: ~95%
 - Inference service: ~95%
 
-## 📊 Technology Stack
+## Technology Stack
 
 | Layer | Technology | Version |
 |-------|-----------|---------|
@@ -386,7 +386,7 @@ annotator/tests.py
 | **AI/ML** | YOLOv8 | ultralytics 8.1.0 |
 | **Image Processing** | OpenCV | 4.8.1.78 |
 
-## 🔄 Development Workflow
+## Development Workflow
 
 ### Backend Development
 1. Create/modify models in `models.py`
@@ -412,7 +412,7 @@ annotator/tests.py
 3. Frontend builds to: `backend/frontend/`
 4. Django serves from: `/frontend/`
 
-## 📈 Scalability Considerations
+## Scalability Considerations
 
 ### For Production
 - Use PostgreSQL (not SQLite)
@@ -434,7 +434,7 @@ annotator/tests.py
 - Pagination optimization
 - Response caching
 
-## 🎯 Future Enhancements
+## Future Enhancements
 
 - [ ] User authentication & authorization
 - [ ] Collaborative annotation

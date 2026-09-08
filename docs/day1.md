@@ -3,7 +3,7 @@
 ## Overview
 Day 1 focused on establishing the project foundation, setting up the development environment, and implementing the core architecture.
 
-## ✅ Completed Tasks
+## Completed Tasks
 
 ### Project Initialization
 
@@ -105,7 +105,7 @@ DB_HOST=localhost
 DB_PORT=5432
 ```
 
-## 🔧 Technical Decisions
+## Technical Decisions
 
 ### Why Django + React?
 - **Django:** Mature framework with strong ORM and REST support
@@ -122,7 +122,7 @@ DB_PORT=5432
 - **Scalable:** Good for growing datasets
 - **Development:** SQLite fallback available
 
-## 📋 Setup Checklist
+## Setup Checklist
 
 - [x] Django project created
 - [x] React + Vite configured
@@ -133,6 +133,6 @@ DB_PORT=5432
 - [x] Dependencies installed
 - [x] Virtual environment configured
 
-## 🚀 Next Steps
+## Next Steps
 
 → **Day 2**: Core API endpoints and image management

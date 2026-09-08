@@ -3,7 +3,7 @@
 ## Overview
 Day 5 focused on integrating YOLOv8 for real-time object detection, implementing the inference service, and adding dataset export capabilities.
 
-## ✅ Completed Tasks
+## Completed Tasks
 
 ### 1. Backend Dependencies Added
 
@@ -189,12 +189,12 @@ class InferenceResponseSerializer(serializers.Serializer)
 │  Inference (YOLOv8)             │
 ├─────────────────────────────────┤
 │                                 │
-│  [📁 Select Image]              │
+│  [Select Image]              │
 │                                 │
 │  Confidence: [════════] 0.50    │
 │  IOU Threshold: [══════] 0.50   │
 │                                 │
-│  [🚀 Run Inference]             │
+│  [Run Inference]             │
 │                                 │
 │  Results: 5 detections          │
 │  Time: 0.234s                   │
@@ -264,7 +264,7 @@ dataset.zip
 │   └── ...
 ```
 
-## 📊 Implementation Statistics
+## Implementation Statistics
 
 | Metric | Count |
 |--------|-------|
@@ -276,7 +276,7 @@ dataset.zip
 | Lines of Code Added | 1,580+ |
 | Test Cases | 20+ |
 
-## 🧪 Testing
+## Testing
 
 ### Test Classes
 
@@ -314,7 +314,7 @@ python manage.py test annotator.InferenceAPITestCase
 python manage.py test annotator.InferenceServiceTestCase.test_model_loads_successfully
 ```
 
-## 🚀 Usage Guide
+## Usage Guide
 
 ### Step 1: Install Dependencies
 ```bash
@@ -333,10 +333,10 @@ python manage.py runserver
 ```
 
 ### Step 4: Use Inference Feature
-1. Navigate to "🤖 Inference" tab
+1. Navigate to "Inference" tab
 2. Upload image
 3. Adjust confidence/IOU thresholds
-4. Click "🚀 Run Inference"
+4. Click "Run Inference"
 5. View results with bounding boxes
 
 ### Step 5: Generate YOLO Dataset
@@ -344,7 +344,7 @@ python manage.py runserver
 2. Click "Generate YOLO"
 3. Download ZIP with images and labels
 
-## 📈 Performance
+## Performance
 
 ### Inference Times (on CPU)
 | Model | Size | Time/Image |
@@ -358,7 +358,7 @@ python manage.py runserver
 - Batch inferences when possible
 - Consider GPU acceleration for production
 
-## 🔧 Configuration
+## Configuration
 
 ### Model Selection
 ```python
@@ -372,13 +372,13 @@ DEFAULT_CONFIDENCE = 0.5
 DEFAULT_IOU = 0.5
 ```
 
-## 📚 Related Documentation
+## Related Documentation
 
 - [INFERENCE_DEPLOYMENT_GUIDE.md](INFERENCE_DEPLOYMENT_GUIDE.md) - Detailed deployment guide
 - [YOLO_TESTING_GUIDE.md](YOLO_TESTING_GUIDE.md) - Testing procedures
 - [QUICK_REFERENCE.md](QUICK_REFERENCE.md) - API endpoint reference
 
-## ✨ Key Achievements
+## Key Achievements
 
 - [x] YOLOv8 integration
 - [x] Inference service with caching
@@ -392,12 +392,12 @@ DEFAULT_IOU = 0.5
 - [x] Error handling
 - [x] Documentation
 
-## 🎉 Project Complete
+## Project Complete
 
 All 5 days of development complete! The Image Annotator now features:
-- ✅ Image upload and management
-- ✅ Interactive annotation canvas
-- ✅ Real-time object detection (YOLOv8)
-- ✅ YOLO dataset export
-- ✅ Production-ready security
-- ✅ Comprehensive testing
+- Image upload and management
+- Interactive annotation canvas
+- Real-time object detection (YOLOv8)
+- YOLO dataset export
+- Production-ready security
+- Comprehensive testing

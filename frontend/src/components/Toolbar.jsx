@@ -37,7 +37,7 @@ export default function Toolbar({ tool, setTool, onUndo, onClearAll, imageName, 
          {imageName && <div className={styles.filename}>{imageName}</div>}
          <div className={styles.hint}>
             {hasAnnotations
-               ? '🔒 Zoom locked · Edit boxes or Clear to re-zoom'
+               ? 'Zoom locked · Edit boxes or Clear to re-zoom'
                : (tool === 'draw' ? 'Click & drag to draw · Scroll to zoom' : 'Click to select · Drag to move / resize')
             }
          </div>

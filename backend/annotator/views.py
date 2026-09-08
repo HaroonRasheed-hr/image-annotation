@@ -398,11 +398,28 @@ class InferenceViewSet(APIView):
         import tempfile
         import time
         import logging
-        from .services.inference import InferenceService
-        from .serializers import InferenceRequestSerializer, InferenceResponseSerializer
         
         logger = logging.getLogger(__name__)
         start_time = time.time()
+        
+        # Imported lazily: the inference stack (ultralytics/torch) is optional and
+        # heavy, so a missing dependency must surface as JSON, not an HTML 500 page.
+        try:
+            from .services.inference import InferenceService
+        except ImportError as e:
+            logger.error(f"Inference dependencies unavailable: {str(e)}", exc_info=True)
+            return Response(
+                {
+                    'success': False,
+                    'message': (
+                        'Inference is unavailable: required dependencies are not '
+                        f'installed on the server ({str(e)}). '
+                        'Install them with: pip install ultralytics torch'
+                    ),
+                    'processing_time': round(time.time() - start_time, 3)
+                },
+                status=status.HTTP_503_SERVICE_UNAVAILABLE
+            )
         
         try:
             # Determine if using image_id or file upload

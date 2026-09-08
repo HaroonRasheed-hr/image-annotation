@@ -47,9 +47,9 @@ export function useAnnotations() {
 
          // Save single annotation endpoint
          const response = await apiClient.post(`/images/${imageId}/annotations/`, annotationData)
-         console.log(`[AUTO-SAVE] ✓ Annotation saved successfully:`, response.data)
+         console.log(`[AUTO-SAVE] Annotation saved successfully:`, response.data)
       } catch (err) {
-         console.error(`[AUTO-SAVE] ✗ Failed to auto-save annotation for image ${imageId}:`, err)
+         console.error(`[AUTO-SAVE] Failed to auto-save annotation for image ${imageId}:`, err)
          if (err.response?.data) {
             console.error(`[AUTO-SAVE] Server error:`, err.response.data)
          }
@@ -98,7 +98,7 @@ export function useAnnotations() {
          })
 
          const dbImage = response.data
-         console.log(`[UPLOAD] ✓ Image uploaded successfully with ID ${dbImage.id}:`, dbImage)
+         console.log(`[UPLOAD] Image uploaded successfully with ID ${dbImage.id}:`, dbImage)
 
          // Update the image in state with the database ID
          setImages(prev => prev.map(img =>
@@ -128,7 +128,7 @@ export function useAnnotations() {
          setActiveImageId(prev => prev === localImage.id ? dbImage.id : prev)
 
       } catch (err) {
-         console.error(`[UPLOAD] ✗ Failed to upload image ${localImage.name}:`, err)
+         console.error(`[UPLOAD] Failed to upload image ${localImage.name}:`, err)
          alert(`Failed to upload ${localImage.name}: ${err.response?.data?.error || err.message}`)
 
          // Remove failed image from state
@@ -188,10 +188,10 @@ export function useAnnotations() {
          console.log(`[DELETE] Deleting image ${id} from database`)
          apiClient.delete(`/images/${id}/`)
             .then(() => {
-               console.log(`[DELETE] ✓ Image ${id} deleted from database`)
+               console.log(`[DELETE] Image ${id} deleted from database`)
             })
             .catch(err => {
-               console.error(`[DELETE] ✗ Failed to delete image ${id} from database:`, err)
+               console.error(`[DELETE] Failed to delete image ${id} from database:`, err)
                alert(`Failed to delete image: ${err.response?.data?.error || err.message}`)
             })
       }

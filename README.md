@@ -2,7 +2,7 @@
 
 A web-based image annotation tool with AI-powered object detection using YOLOv8.
 
-## 🚀 Quick Install
+## Quick Install
 
 ### Prerequisites
 - **Python 3.8+**
@@ -71,7 +71,7 @@ CORS_ALLOWED_ORIGINS=http://localhost:3000,http://localhost:5173
 python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
 ```
 
-## 📚 Full Documentation
+## Full Documentation
 
 For complete documentation, architecture details, and feature guides, please visit the [**docs** folder](docs/README.md).
 
@@ -82,23 +82,23 @@ For complete documentation, architecture details, and feature guides, please vis
 - [Day 4: Security](docs/day4.md) - Security hardening and configuration
 - [Day 5: Inference](docs/day5.md) - YOLOv8 integration and deployment
 
-## ✨ Features
+## Features
 
-- 📸 Image upload and management
-- 🎯 Interactive annotation canvas
-- 🤖 AI-powered object detection (YOLOv8)
-- 📥 YOLO dataset export
-- 🔒 Production-ready security
-- 🧪 Comprehensive test coverage
+- Image upload and management
+- Interactive annotation canvas
+- AI-powered object detection (YOLOv8)
+- YOLO dataset export
+- Production-ready security
+- Comprehensive test coverage
 
-## 🔗 Useful Resources
+## Useful Resources
 
 - [Quick Reference](docs/QUICK_REFERENCE.md) - Commands and API endpoints
 - [Security Configuration](docs/SECURITY_CONFIGURATION.md) - Deployment security
 - [Inference Guide](docs/INFERENCE_DEPLOYMENT_GUIDE.md) - YOLOv8 setup
 - [Testing Guide](docs/YOLO_TESTING_GUIDE.md) - Test procedures
 
-## 📝 License
+## License
 
 Created as an educational project for image annotation and object detection.
 

@@ -28,7 +28,7 @@ REM Create media directory
 if not exist "media\images" (
     mkdir media\images
 )
-echo. ✓ Media directories created
+echo. Media directories created
 
 REM Run migrations
 echo Running database migrations...
@@ -41,7 +41,7 @@ python manage.py collectstatic --noinput
 REM Display instructions
 echo.
 echo ================================
-echo ✓ Setup Complete!
+echo Setup Complete!
 echo ================================
 echo.
 echo To start the development server, run:

@@ -384,12 +384,12 @@ class YOLOConverter:
                     img_bytes_io.seek(0)
                     
                     zip_file.writestr(f"images/{img_filename}", img_bytes_io.read())
-                    print(f"[ZIP-GEN]   ✓ Added image with boxes: images/{img_filename}")
+                    print(f"[ZIP-GEN]   Added image with boxes: images/{img_filename}")
                     images_added += 1
                     files_added += 1
                     
                 except Exception as e:
-                    print(f"[ZIP-GEN]   ✗ ERROR drawing boxes: {str(e)}")
+                    print(f"[ZIP-GEN]   ERROR drawing boxes: {str(e)}")
                     print(f"[ZIP-GEN]   Trying to add original image without boxes...")
                     
                     try:
@@ -402,11 +402,11 @@ class YOLOConverter:
                         
                         img_bytes_io.seek(0)
                         zip_file.writestr(f"images/{img_filename}", img_bytes_io.read())
-                        print(f"[ZIP-GEN]   ✓ Added original image (no boxes): images/{img_filename}")
+                        print(f"[ZIP-GEN]   Added original image (no boxes): images/{img_filename}")
                         images_added += 1
                         files_added += 1
                     except Exception as e2:
-                        print(f"[ZIP-GEN]   ✗ ERROR adding original image: {str(e2)}")
+                        print(f"[ZIP-GEN]   ERROR adding original image: {str(e2)}")
                         print(f"[ZIP-GEN]   Skipping image {image.id}")
                 
                 # Step 2: Always add label file (with YOLO format)
@@ -416,12 +416,12 @@ class YOLOConverter:
                     
                     zip_file.writestr(f"labels/{label_filename}", yolo_content)
                     annot_count = image.annotations.count()
-                    print(f"[ZIP-GEN]   ✓ Added label: labels/{label_filename} ({annot_count} annotations, {len(yolo_content)} bytes)")
+                    print(f"[ZIP-GEN]   Added label: labels/{label_filename} ({annot_count} annotations, {len(yolo_content)} bytes)")
                     labels_added += 1
                     files_added += 1
                     
                 except Exception as e:
-                    print(f"[ZIP-GEN]   ✗ ERROR adding label: {str(e)}")
+                    print(f"[ZIP-GEN]   ERROR adding label: {str(e)}")
         
         zip_buffer.seek(0)
         zip_size = len(zip_buffer.getvalue())

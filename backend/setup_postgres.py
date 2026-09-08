@@ -45,12 +45,12 @@ try:
     )
     
     if result.returncode == 0 or 'already exists' in result.stderr:
-        print("✓ Database created or already exists")
+        print("Database created or already exists")
     else:
-        print(f"✗ Error: {result.stderr}")
+        print(f"Error: {result.stderr}")
         sys.exit(1)
 except Exception as e:
-    print(f"✗ Error connecting to PostgreSQL: {e}")
+    print(f"Error connecting to PostgreSQL: {e}")
     print("\nMake sure:")
     print(f"  1. PostgreSQL server is running on {DB_HOST}:{DB_PORT}")
     print(f"  2. User '{DB_USER}' exists with correct password")
@@ -61,10 +61,10 @@ except Exception as e:
 print("\nStep 2: Running Django migrations...")
 result = subprocess.run(['python', 'manage.py', 'migrate'], capture_output=True, text=True)
 if result.returncode == 0:
-    print("✓ Migrations completed successfully")
+    print("Migrations completed successfully")
     print(result.stdout)
 else:
-    print("✗ Migration error:")
+    print("Migration error:")
     print(result.stderr)
     sys.exit(1)
 

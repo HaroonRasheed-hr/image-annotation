@@ -131,9 +131,9 @@ const InferencePanel = ({ images = [], annotations = {}, activeImageId = null, o
    if (datasetImages.length === 0) {
       return (
          <div className={styles.inferencePanel}>
-            <h2 className={styles.title}>🤖 YOLO Inference</h2>
+            <h2 className={styles.title}>YOLO Inference</h2>
             <div className={styles.emptyState}>
-               <p>📊 No images with annotations found</p>
+               <p>No images with annotations found</p>
                <p className={styles.emptyStateSubtext}>
                   Please go to the Annotate tab to:
                </p>
@@ -149,13 +149,13 @@ const InferencePanel = ({ images = [], annotations = {}, activeImageId = null, o
 
    return (
       <div className={styles.inferencePanel}>
-         <h2 className={styles.title}>🤖 YOLO Inference</h2>
+         <h2 className={styles.title}>YOLO Inference</h2>
          <p className={styles.subtitle}>Select annotated image from dataset and run detection</p>
 
          {/* Dataset Image Selection Section */}
          <div className={styles.selectionSection}>
             <label htmlFor="dataset-image-select" className={styles.label}>
-               📸 Select Image from Dataset ({datasetImages.length} available)
+               Select Image from Dataset ({datasetImages.length} available)
             </label>
             <select
                id="dataset-image-select"
@@ -173,7 +173,7 @@ const InferencePanel = ({ images = [], annotations = {}, activeImageId = null, o
             </select>
             {selectedImage && (
                <div className={styles.selectedInfo}>
-                  ✓ Selected: <strong>{selectedImage.name}</strong>
+                  Selected: <strong>{selectedImage.name}</strong>
                   <br />
                   Annotations: <span className={styles.annotationCount}>
                      {annotations[selectedImage.id]?.length || 0} boxes
@@ -228,28 +228,28 @@ const InferencePanel = ({ images = [], annotations = {}, activeImageId = null, o
                disabled={!selectedImage || loading}
                className={`${styles.button} ${styles.runButton}`}
             >
-               {loading ? '⏳ Running inference...' : '🚀 Run Inference'}
+               {loading ? '⏳ Running inference...' : 'Run Inference'}
             </button>
             <button
                onClick={handleReset}
                disabled={loading}
                className={`${styles.button} ${styles.resetButton}`}
             >
-               🔄 Reset
+               Reset
             </button>
          </div>
 
          {/* Error Message */}
          {error && (
             <div className={styles.error}>
-               <span>❌ {error}</span>
+               <span>{error}</span>
             </div>
          )}
 
          {/* Processing Time */}
          {processingTime !== null && (
             <div className={styles.processingTime}>
-               ✓ Processed in {processingTime.toFixed(3)}s
+               Processed in {processingTime.toFixed(3)}s
             </div>
          )}
 
@@ -267,7 +267,7 @@ const InferencePanel = ({ images = [], annotations = {}, activeImageId = null, o
          {/* Detections Summary */}
          {detections.length > 0 && (
             <div className={styles.detectionsSummary}>
-               <h3>🎯 Detected Objects ({detections.length})</h3>
+               <h3>Detected Objects ({detections.length})</h3>
                <div className={styles.detectionsList}>
                   {detections.map((detection, idx) => (
                      <div key={idx} className={styles.detectionItem}>
@@ -286,7 +286,7 @@ const InferencePanel = ({ images = [], annotations = {}, activeImageId = null, o
          {/* No Detections Message */}
          {detections.length === 0 && selectedImage && !loading && !error && processingTime !== null && (
             <div className={styles.noDetections}>
-               ⭕ No objects detected with current parameters
+               No objects detected with current parameters
             </div>
          )}
       </div>

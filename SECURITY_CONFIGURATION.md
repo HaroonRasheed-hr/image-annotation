@@ -31,7 +31,7 @@ if not SECRET_KEY:
 ```
 
 ### Best Practices
-✅ **DO:**
+**DO:**
 - Generate a unique, long secret key (50+ characters)
 - Store it in `.env` file (not in version control)
 - Use a cryptographically secure generator:
@@ -41,7 +41,7 @@ if not SECRET_KEY:
 - Change the key when rotating credentials
 - Use different keys for development, staging, and production
 
-❌ **DON'T:**
+**DON'T:**
 - Use the default `django-insecure-*` keys in production
 - Commit `.env` files to version control
 - Share the secret key in emails or chat
@@ -67,13 +67,13 @@ if DEBUG:
 ```
 
 ### Best Practices
-✅ **DO:**
+**DO:**
 - Set `DEBUG=False` in production
 - Use proper logging instead of error pages
 - Catch and handle exceptions gracefully
 - Return generic error messages to users
 
-❌ **DON'T:**
+**DON'T:**
 - Enable DEBUG in production under any circumstances
 - Rely on error pages for debugging in production
 - Fill logs with sensitive information
@@ -96,7 +96,7 @@ ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS_STR.split(',') if host.s
 ```
 
 ### Best Practices
-✅ **DO:**
+**DO:**
 - List all exact domain names:
   ```
   ALLOWED_HOSTS=example.com,www.example.com,api.example.com
@@ -104,7 +104,7 @@ ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS_STR.split(',') if host.s
 - Use environment variables for flexibility
 - Update for each deployment environment
 
-❌ **DON'T:**
+**DON'T:**
 - Use `ALLOWED_HOSTS = ['*']` in production
 - Include unnecessary domains
 - Hardcode localhost in production configs
@@ -125,7 +125,7 @@ CORS_ALLOWED_ORIGINS = [origin.strip() for origin in CORS_ALLOWED_ORIGINS_STR.sp
 ```
 
 ### Best Practices
-✅ **DO:**
+**DO:**
 - List only trusted frontend domains
 - Use HTTPS URLs in production:
   ```
@@ -134,7 +134,7 @@ CORS_ALLOWED_ORIGINS = [origin.strip() for origin in CORS_ALLOWED_ORIGINS_STR.sp
 - Remove localhost origins in production
 - Keep credentials (`CORS_ALLOW_CREDENTIALS=True`) only when necessary
 
-❌ **DON'T:**
+**DON'T:**
 - Use `CORS_ALLOWED_ORIGINS = ['*']` if credentials are enabled
 - Include untrusted or competitor domains
 - Expose API to all origins

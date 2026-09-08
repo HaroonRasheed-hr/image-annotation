@@ -213,7 +213,7 @@ export default function AnnotationCanvas({ image, annotations, selectedBoxId, on
          )}
          <div className={styles.zoomBadge}>
             {Math.round(zoom * 100)}%
-            {annotations.length > 0 && <span title="Zoom locked after drawing boxes"> 🔒</span>}
+            {annotations.length > 0 && <span title="Zoom locked after drawing boxes"> Locked</span>}
          </div>
       </div>
    )

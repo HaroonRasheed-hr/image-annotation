@@ -17,11 +17,11 @@ export default function Navbar({ onExport, annotationCount, images, annotations,
    }, [])
 
    // Helper function to set status with guaranteed 5-second display
-   const setStatusWithTimeout = (message, duration = 5000) => {
+   const setStatusWithTimeout = (message, duration = 5000, type = 'info') => {
       if (statusTimeoutRef.current) {
          clearTimeout(statusTimeoutRef.current)
       }
-      setExportStatus(message)
+      setExportStatus({ message, type })
       statusTimeoutRef.current = setTimeout(() => {
          setExportStatus(null)
          statusTimeoutRef.current = null
@@ -59,7 +59,7 @@ export default function Navbar({ onExport, annotationCount, images, annotations,
 
             // Check if this is a local image (string ID) or already uploaded (numeric ID)
             if (typeof image.id === 'number') {
-               console.log(`[YOLO]   ✓ Image ${image.id} already uploaded`)
+               console.log(`[YOLO]   Image ${image.id} already uploaded`)
                uploadedImageIds.push(image.id)
             } else {
                // Need to upload this image
@@ -74,10 +74,10 @@ export default function Navbar({ onExport, annotationCount, images, annotations,
                   const uploadResult = await apiClient.post('/images/', formData, {
                      headers: { 'Content-Type': 'multipart/form-data' }
                   })
-                  console.log(`[YOLO]   ✓ Uploaded image: ${uploadResult.data.id}`)
+                  console.log(`[YOLO]   Uploaded image: ${uploadResult.data.id}`)
                   uploadedImageIds.push(uploadResult.data.id)
                } catch (uploadErr) {
-                  console.error(`[YOLO]   ✗ Upload failed: ${image.name}`, uploadErr)
+                  console.error(`[YOLO]   Upload failed: ${image.name}`, uploadErr)
                   throw new Error(`Failed to upload image: ${image.name}`)
                }
             }
@@ -115,7 +115,7 @@ export default function Navbar({ onExport, annotationCount, images, annotations,
             if (bulkData.images.length > 0) {
                console.log(`[YOLO]   ↑ Submitting annotations for ${bulkData.images.length} images`)
                const bulkResult = await apiClient.post('/images/bulk/annotations/', bulkData)
-               console.log('[YOLO]   ✓ Bulk annotations submitted:', bulkResult.data)
+               console.log('[YOLO]   Bulk annotations submitted:', bulkResult.data)
             } else {
                console.log('[YOLO]   No annotations to submit')
             }
@@ -135,7 +135,7 @@ export default function Navbar({ onExport, annotationCount, images, annotations,
             responseType: 'blob'
          })
 
-         console.log('[YOLO] ✓ Received response from server')
+         console.log('[YOLO] Received response from server')
          console.log('=== YOLO Response ===')
          console.log('Response status:', response.status)
          console.log('Response headers:', response.headers)
@@ -189,8 +189,8 @@ export default function Navbar({ onExport, annotationCount, images, annotations,
          document.body.removeChild(link)
          window.URL.revokeObjectURL(url)
 
-         console.log('[YOLO] ✓ File downloaded:', filename)
-         setStatusWithTimeout(`✓ Dataset generated and downloaded! ${imagesCount} images, ${annotationsCount} annotations`)
+         console.log('[YOLO] File downloaded:', filename)
+         setStatusWithTimeout(`Dataset generated and downloaded! ${imagesCount} images, ${annotationsCount} annotations`, 5000, 'success')
          console.log('=' * 50 + '\n')
       } catch (error) {
          console.error('=== YOLO GENERATION ERROR ===')
@@ -217,7 +217,7 @@ export default function Navbar({ onExport, annotationCount, images, annotations,
          }
 
          console.error('Final error message:', errorMsg)
-         setStatusWithTimeout(`✗ ${errorMsg}`)
+         setStatusWithTimeout(errorMsg, 5000, 'error')
          console.log(sep + '\n')
       } finally {
          setIsExporting(false)
@@ -291,7 +291,7 @@ export default function Navbar({ onExport, annotationCount, images, annotations,
          console.log('Bulk data to submit:', bulkData)
 
          if (!bulkData.images.length) {
-            setStatusWithTimeout('✗ No annotations to submit', 2000)
+            setStatusWithTimeout('No annotations to submit', 2000, 'error')
             setIsExporting(false)
             return
          }
@@ -300,7 +300,7 @@ export default function Navbar({ onExport, annotationCount, images, annotations,
          const response = await apiClient.post('/images/bulk/annotations/', bulkData)
          console.log('Submission response:', response.data)
 
-         setStatusWithTimeout(`✓ ${response.data.total_annotations} annotations submitted across ${response.data.total_images} images`)
+         setStatusWithTimeout(`${response.data.total_annotations} annotations submitted across ${response.data.total_images} images`, 5000, 'success')
       } catch (error) {
          console.error('Bulk submission error:', error.response?.data || error.message)
          let errorMsg = 'Failed to submit annotations'
@@ -311,7 +311,7 @@ export default function Navbar({ onExport, annotationCount, images, annotations,
          } else if (error.message) {
             errorMsg = error.message
          }
-         setStatusWithTimeout(`✗ ${errorMsg}`)
+         setStatusWithTimeout(errorMsg, 5000, 'error')
       } finally {
          setIsExporting(false)
       }
@@ -344,7 +344,7 @@ export default function Navbar({ onExport, annotationCount, images, annotations,
                      disabled={isExporting || !hasAnnotations}
                      title="Submit all annotations to backend"
                   >
-                     📤 Submit
+                     Submit
                   </button>
                   <button
                      className={styles.actionBtn}
@@ -352,15 +352,15 @@ export default function Navbar({ onExport, annotationCount, images, annotations,
                      disabled={isExporting || !hasAnnotations}
                      title="Generate YOLO dataset"
                   >
-                     🚀 Generate YOLO
+                     Generate YOLO
                   </button>
                </>
             )}
          </div>
 
          {exportStatus && (
-            <div className={`${styles.status} ${exportStatus.startsWith('✓') ? styles.success : styles.error}`}>
-               {exportStatus}
+            <div className={`${styles.status} ${exportStatus.type === 'success' ? styles.success : styles.error}`}>
+               {exportStatus.message}
             </div>
          )}
       </nav>

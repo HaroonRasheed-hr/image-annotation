@@ -11,7 +11,7 @@ echo "================================"
 
 # Check Python version
 PYTHON_VERSION=$(python3 --version 2>&1 | grep -oP '\d+\.\d+')
-echo "✓ Python $PYTHON_VERSION detected"
+echo "Python $PYTHON_VERSION detected"
 
 # Create virtual environment
 if [ ! -d "venv" ]; then
@@ -29,7 +29,7 @@ pip install -r requirements.txt
 
 # Create media directory
 mkdir -p media/images
-echo "✓ Media directories created"
+echo "Media directories created"
 
 # Run migrations
 echo "Running database migrations..."
@@ -42,7 +42,7 @@ python manage.py collectstatic --noinput
 # Display instructions
 echo ""
 echo "================================"
-echo "✓ Setup Complete!"
+echo "Setup Complete!"
 echo "================================"
 echo ""
 echo "To start the development server, run:"

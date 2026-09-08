@@ -3,7 +3,7 @@
 ## Overview
 Day 2 focused on building the core API endpoints, database models, and image management functionality.
 
-## ✅ Completed Tasks
+## Completed Tasks
 
 ### Backend Models
 
@@ -93,7 +93,7 @@ POST   /api/images/{id}/upload/  → Bulk image upload
 - Cleanup of failed uploads
 - Proper error handling
 
-## 🔄 API Workflow
+## API Workflow
 
 ### Image Upload Workflow
 ```
@@ -113,7 +113,7 @@ POST   /api/images/{id}/upload/  → Bulk image upload
 5. Real-time update on frontend
 ```
 
-## 📊 Database Schema
+## Database Schema
 
 ### Images Table
 | Column | Type | Purpose |
@@ -138,7 +138,7 @@ POST   /api/images/{id}/upload/  → Bulk image upload
 | width | FLOAT | Normalized width |
 | height | FLOAT | Normalized height |
 
-## 🔧 Technical Decisions
+## Technical Decisions
 
 ### Why YOLO Normalization?
 - Industry standard for object detection datasets
@@ -156,7 +156,7 @@ POST   /api/images/{id}/upload/  → Bulk image upload
 - Atomic operations per annotation
 - Easier to query and filter
 
-## 📈 Features Implemented
+## Features Implemented
 
 - [x] Image upload with validation
 - [x] Image listing with pagination
@@ -167,7 +167,7 @@ POST   /api/images/{id}/upload/  → Bulk image upload
 - [x] Database migrations
 - [x] User authentication setup
 
-## 🧪 Testing
+## Testing
 
 **Test Coverage:**
 - Image model creation and validation
@@ -176,6 +176,6 @@ POST   /api/images/{id}/upload/  → Bulk image upload
 - Upload file handling
 - Error cases and edge conditions
 
-## 🚀 Next Steps
+## Next Steps
 
 → **Day 3**: UI implementation and annotation canvas

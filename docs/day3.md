@@ -3,7 +3,7 @@
 ## Overview
 Day 3 focused on building the React user interface, implementing the annotation canvas, and creating interactive components.
 
-## ✅ Completed Tasks
+## Completed Tasks
 
 ### React Components Created
 
@@ -163,7 +163,7 @@ const apiClient = axios.create({
 - Graceful degradation
 - Retry mechanisms
 
-## 🎨 Component Architecture
+## Component Architecture
 
 ```
 App
@@ -175,7 +175,7 @@ App
 └── InferencePanel (Day 5)
 ```
 
-## 📦 Key Libraries
+## Key Libraries
 
 | Library | Purpose |
 |---------|---------|
@@ -185,7 +185,7 @@ App
 | React Hooks | State management |
 | CSS Modules | Component styling |
 
-## 🔄 Event Flow
+## Event Flow
 
 ### Box Drawing Flow
 ```
@@ -223,7 +223,7 @@ Draw existing boxes
 Update sidebar
 ```
 
-## 🧪 Interactive Features
+## Interactive Features
 
 - [x] Image display and navigation
 - [x] Real-time box drawing
@@ -236,7 +236,7 @@ Update sidebar
 - [x] Responsive UI
 - [x] Keyboard shortcuts
 
-## 📊 Performance Optimizations
+## Performance Optimizations
 
 ### Canvas Rendering
 - Efficient redraw on changes only
@@ -253,6 +253,6 @@ Update sidebar
 - Batch updates where possible
 - Caching of image data
 
-## 🚀 Next Steps
+## Next Steps
 
 → **Day 4**: Security hardening and environment configuration

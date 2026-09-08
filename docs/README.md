@@ -2,7 +2,7 @@
 
 Welcome to the Image Annotator documentation. This folder contains comprehensive guides organized by development day and feature.
 
-## 📚 Documentation Files
+## Documentation Files
 
 ### Daily Development Summaries
 
@@ -30,7 +30,7 @@ Welcome to the Image Annotator documentation. This folder contains comprehensive
 | [api_reference.md](api_reference.md) | Complete API endpoint documentation |
 | [architecture.md](architecture.md) | System architecture and design patterns |
 
-## 🚀 Quick Start
+## Quick Start
 
 New to the project? Start here:
 
@@ -39,7 +39,7 @@ New to the project? Start here:
 3. **Common Tasks** → Use [QUICK_REFERENCE.md](QUICK_REFERENCE.md) for command reference
 4. **Production Deployment** → Follow [SECURITY_CONFIGURATION.md](SECURITY_CONFIGURATION.md)
 
-## 📖 File Descriptions
+## File Descriptions
 
 ### day1.md - Project Setup & Architecture
 **What it covers:**
@@ -87,19 +87,19 @@ New to the project? Start here:
 
 **Why it exists:** Adds AI-powered object detection capabilities.
 
-## 🔗 Related Files
+## Related Files
 
 - **Root README.md** - Installation guide and quick overview
 - **Project Root** - Code implementation
 
-## 💡 Tips for Navigation
+## Tips for Navigation
 
 - Use **Ctrl+F** (or Cmd+F) to search within documentation
 - Follow the **Daily Summaries** in order for chronological understanding
 - Use **Feature Guides** for specific implementation details
 - Refer to **QUICK_REFERENCE.md** for command syntax
 
-## ❓ Questions?
+## Questions?
 
 - Check the relevant day file for your question
 - Visit QUICK_REFERENCE.md for common commands

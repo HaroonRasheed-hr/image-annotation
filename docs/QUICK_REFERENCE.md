@@ -1,6 +1,6 @@
 # Quick Reference - Security & Environment Setup
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Development Setup
 ```bash
@@ -31,7 +31,7 @@ python manage.py runserver
 
 ---
 
-## 🔑 Environment Variables
+## Environment Variables
 
 ### Required in .env
 ```env
@@ -48,7 +48,7 @@ SECURE_HSTS_SECONDS=31536000               # For HTTPS (production)
 
 ---
 
-## 🔒 Development vs Production Settings
+## Development vs Production Settings
 
 ### Development (.env)
 ```env
@@ -69,7 +69,7 @@ SECURE_HSTS_SECONDS=31536000
 
 ---
 
-## ⚠️ Common Issues & Solutions
+## Common Issues & Solutions
 
 ### Issue: "CRITICAL ERROR: SECRET_KEY environment variable is not set!"
 **Solution:**
@@ -106,38 +106,38 @@ pip install python-decouple
 
 ---
 
-## 🛡️ Security Checks
+## Security Checks
 
 ### Before Pushing to GitHub
 ```bash
-# ✓ Verify .env is in .gitignore
+# Verify .env is in .gitignore
 grep "\.env" .gitignore
 
-# ✓ Ensure .env is NOT staged for commit
+# Ensure .env is NOT staged for commit
 git status
 
-# ✓ Verify no secrets in committed code
+# Verify no secrets in committed code
 git diff
 ```
 
 ### Before Production Deployment
 ```bash
-# ✓ Check Django security status
+# Check Django security status
 python manage.py check --deploy
 
-# ✓ Verify DEBUG=False
+# Verify DEBUG=False
 grep "DEBUG=" .env
 
-# ✓ Verify ALLOWED_HOSTS is set correctly
+# Verify ALLOWED_HOSTS is set correctly
 grep "ALLOWED_HOSTS=" .env
 
-# ✓ Verify SECRET_KEY is unique (not django-insecure-)
+# Verify SECRET_KEY is unique (not django-insecure-)
 grep "SECRET_KEY=" .env
 ```
 
 ---
 
-## 🔐 Secret Key Management
+## Secret Key Management
 
 ### Generate a Secure Key
 ```bash
@@ -162,7 +162,7 @@ python -c "from django.core.management.utils import get_random_secret_key; print
 
 ---
 
-## 📋 Environment Variable Reference
+## Environment Variable Reference
 
 | Variable | Type | Default | Example | Notes |
 |----------|------|---------|---------|-------|
@@ -177,7 +177,7 @@ python -c "from django.core.management.utils import get_random_secret_key; print
 
 ---
 
-## 🚨 Production Safety Checklist
+## Production Safety Checklist
 
 Before `docker build` and deployment:
 
@@ -208,7 +208,7 @@ Before `docker build` and deployment:
 
 ---
 
-## 📞 Documentation
+## Documentation
 
 - **Full Guide**: See `SECURITY_CONFIGURATION.md`
 - **Template**: See `backend/.env.example`
@@ -217,7 +217,7 @@ Before `docker build` and deployment:
 
 ---
 
-## 🔗 Useful Commands
+## Useful Commands
 
 ```bash
 # Run Django security check
