@@ -282,7 +282,9 @@ class AnnotationViewSet(viewsets.ModelViewSet):
     - DELETE /api/images/{image_id}/annotations/clear-all/ - Delete all annotations
     """
     serializer_class = AnnotationSerializer
-    parser_classes = (MultiPartParser, FormParser)
+    # JSONParser is required: the client posts annotations as application/json.
+    # Without it DRF rejects every save with 415 before the view is reached.
+    parser_classes = (JSONParser, MultiPartParser, FormParser)
     
     def get_queryset(self):
         """Filter annotations by image ID from URL"""
@@ -404,9 +406,12 @@ class InferenceViewSet(APIView):
         
         # Imported lazily: the inference stack (ultralytics/torch) is optional and
         # heavy, so a missing dependency must surface as JSON, not an HTML 500 page.
+        # OSError is caught alongside ImportError: a broken native install (e.g. a
+        # torch DLL that fails to load) raises OSError, not ImportError, and would
+        # otherwise escape as an HTML 500 page.
         try:
             from .services.inference import InferenceService
-        except ImportError as e:
+        except (ImportError, OSError) as e:
             logger.error(f"Inference dependencies unavailable: {str(e)}", exc_info=True)
             return Response(
                 {
