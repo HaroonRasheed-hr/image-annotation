@@ -29,6 +29,7 @@ Welcome to the Image Annotator documentation. This folder contains comprehensive
 |------|-------------|
 | [api_reference.md](api_reference.md) | Complete API endpoint documentation |
 | [architecture.md](architecture.md) | System architecture and design patterns |
+| [complete_documentation.md](complete_documentation.md) | Full project documentation (versions, structure, workflows) |
 
 ## Quick Start
 
@@ -44,7 +45,7 @@ New to the project? Start here:
 ### day1.md - Project Setup & Architecture
 **What it covers:**
 - Project initialization and directory structure
-- Technology stack (Django, React, PostgreSQL)
+- Technology stack (Django, React, SQLite)
 - Environment setup and prerequisites
 - Initial configuration
 

@@ -123,7 +123,7 @@ Then access:
   • Admin: http://localhost:8000/admin/
   • Health: http://localhost:8000/api/health/
 
-For more information, see backenddoc.md
+For more information, see docs/complete_documentation.md
 """)
 
 if __name__ == "__main__":

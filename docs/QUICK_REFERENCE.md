@@ -171,9 +171,6 @@ python -c "from django.core.management.utils import get_random_secret_key; print
 | `ALLOWED_HOSTS` | CSV | `127.0.0.1,localhost` | `example.com,www.example.com` | Comma-separated, no wildcards. |
 | `CORS_ALLOWED_ORIGINS` | CSV | localhost defaults | `https://example.com` | Comma-separated, use HTTPS in prod. |
 | `SECURE_HSTS_SECONDS` | Int | 0 | `31536000` | Set to 31536000 (1 year) in prod. |
-| `DB_NAME` | String | `sqlite` | `image_annotator` | Database name (if not SQLite). |
-| `DB_USER` | String | None | `postgres` | Database user (if not SQLite). |
-| `DB_PASSWORD` | String | None | `secure-pass` | Database password (if not SQLite). |
 
 ---
 

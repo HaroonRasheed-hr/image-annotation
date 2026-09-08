@@ -7,7 +7,6 @@ A web-based image annotation tool with AI-powered object detection using YOLOv8.
 ### Prerequisites
 - **Python 3.8+**
 - **Node.js 16+**
-- **PostgreSQL** (optional, SQLite works for development)
 
 ### Backend Setup
 
@@ -58,11 +57,6 @@ Frontend runs on: `http://localhost:5173`
 DEBUG=false
 SECRET_KEY=<your-secret-key>
 ALLOWED_HOSTS=localhost,127.0.0.1
-DB_NAME=image_annotator
-DB_USER=postgres
-DB_PASSWORD=<password>
-DB_HOST=localhost
-DB_PORT=5432
 CORS_ALLOWED_ORIGINS=http://localhost:3000,http://localhost:5173
 ```
 
@@ -95,6 +89,7 @@ For complete documentation, architecture details, and feature guides, please vis
 
 - [Quick Reference](docs/QUICK_REFERENCE.md) - Commands and API endpoints
 - [Security Configuration](docs/SECURITY_CONFIGURATION.md) - Deployment security
+- [Complete Documentation](docs/complete_documentation.md) - Versions, structure, and workflows
 - [Inference Guide](docs/INFERENCE_DEPLOYMENT_GUIDE.md) - YOLOv8 setup
 - [Testing Guide](docs/YOLO_TESTING_GUIDE.md) - Test procedures
 

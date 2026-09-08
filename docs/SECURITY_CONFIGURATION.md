@@ -216,13 +216,6 @@ ALLOWED_HOSTS=yourdomain.com,www.yourdomain.com
 
 # CORS
 CORS_ALLOWED_ORIGINS=https://yourdomain.com
-
-# Database
-DB_NAME=image_annotator
-DB_USER=postgres
-DB_PASSWORD=your-secure-password
-DB_HOST=localhost
-DB_PORT=5432
 ```
 
 ### .env File Protection

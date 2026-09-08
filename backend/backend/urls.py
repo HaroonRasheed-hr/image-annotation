@@ -24,12 +24,12 @@ def home(request):
             'health': 'http://localhost:8000/api/health/',
             'images': 'http://localhost:8000/api/images/',
         },
-        'documentation': 'See ./backenddoc.md for complete API documentation'
+        'documentation': 'See docs/complete_documentation.md for complete API documentation'
     })
 
 def serve_logo(request):
-    """Serve logo.png from frontend"""
-    logo_path = settings.BASE_DIR / 'frontend' / 'logo.png'
+    """Serve logo.png from the built frontend bundle"""
+    logo_path = settings.BASE_DIR / 'frontend_build' / 'logo.png'
     if logo_path.exists():
         return FileResponse(open(logo_path, 'rb'), content_type='image/png')
     return JsonResponse({'error': 'Logo not found'}, status=404)

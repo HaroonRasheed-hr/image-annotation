@@ -79,8 +79,8 @@ opencv-python==4.8.1.78 (added Day 5)
 ```
 
 #### Build Output Configuration
-- Vite configured to build into `backend/frontend`
-- Static assets go to `backend/frontend/static`
+- Vite configured to build into `backend/frontend_build`
+- Static assets go to `backend/frontend_build/static`
 - Enables seamless Django + React integration
 
 ### API Foundation

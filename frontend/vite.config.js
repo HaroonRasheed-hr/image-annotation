@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
    plugins: [react()],
    build: {
-      outDir: '../backend/frontend',
+      outDir: '../backend/frontend_build',
       assetsDir: 'static',
       emptyOutDir: true,
    },

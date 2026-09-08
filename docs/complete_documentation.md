@@ -40,7 +40,6 @@
 Django==6.0.3
 djangorestframework==3.14.0
 django-cors-headers==4.3.1
-psycopg2-binary==2.9.9
 Pillow==10.1.0
 python-decouple==3.8
 ```
@@ -107,7 +106,7 @@ npm install
 ```bash
 npm run build
 ```
-This outputs to: `../backend/frontend/`
+This outputs to: `../backend/frontend_build/`
 
 4. **Collect static files (from backend directory)**
 ```bash
@@ -124,7 +123,6 @@ Open browser: `http://localhost:8000`
 
 ### Database Type
 - **SQLite** (default, file-based: `db.sqlite3`)
-- **PostgreSQL** (optional, via environment configuration)
 
 ### Database Tables
 
@@ -526,7 +524,7 @@ curl -X POST -H "Content-Type: application/json" \
 │   ├── package.json           # Node dependencies
 │   ├── vite.config.js         # Vite configuration
 │   └── index.html
-└── doc.md                     # This file
+└── docs/complete_documentation.md  # This file
 ```
 
 ---
@@ -556,9 +554,9 @@ CORS_ALLOWED_ORIGINS = [
 
 Frontend built files:
 ```
-backend/frontend/               # React build output
+backend/frontend_build/               # React build output
 backend/staticfiles/            # Collected static files
-backend/frontend/static/        # JS/CSS bundles
+backend/frontend_build/static/        # JS/CSS bundles
 ```
 
 ---
