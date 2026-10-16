@@ -84,6 +84,9 @@ if DEBUG:
 
 ALLOWED_HOSTS_STR = config('ALLOWED_HOSTS', default='127.0.0.1,localhost')
 ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS_STR.split(',') if host.strip()]
+VERCEL_URL = os.environ.get('VERCEL_URL')
+if VERCEL_URL and VERCEL_URL not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append(VERCEL_URL)
 
 if '*' in ALLOWED_HOSTS:
     import warnings
@@ -288,4 +291,3 @@ if not DEBUG and not config('SECRET_KEY', default='').startswith('django-insecur
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SECURE_SSL_REDIRECT = False  # Set to True if behind a reverse proxy with HTTPS
-    
