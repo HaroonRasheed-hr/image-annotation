@@ -289,5 +289,3 @@ if not DEBUG and not config('SECRET_KEY', default='').startswith('django-insecur
     CSRF_COOKIE_SECURE = True
     SECURE_SSL_REDIRECT = False  # Set to True if behind a reverse proxy with HTTPS
     
-    # Log a warning if these aren't properly configured
-    print('Production security settings enabled')
