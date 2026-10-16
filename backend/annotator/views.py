@@ -419,7 +419,7 @@ class InferenceViewSet(APIView):
                     'message': (
                         'Inference is unavailable: required dependencies are not '
                         f'installed on the server ({str(e)}). '
-                        'Install them with: pip install ultralytics torch'
+                        'Install them with: pip install -r requirements-inference.txt'
                     ),
                     'processing_time': round(time.time() - start_time, 3)
                 },

@@ -26,6 +26,9 @@ source venv/bin/activate
 # Install dependencies
 pip install -r requirements.txt
 
+# Install the optional YOLO inference stack for local inference
+pip install -r requirements-inference.txt
+
 # Run migrations
 python manage.py migrate
 
@@ -34,6 +37,11 @@ python manage.py runserver
 ```
 
 Server runs on: `http://localhost:8000`
+
+Vercel installs only `requirements.txt` to stay within its function-size limit.
+The rest of the API remains available there, but the inference endpoint responds
+with HTTP 503 unless inference is deployed separately on a host that can install
+`requirements-inference.txt`.
 
 ### Frontend Setup
 

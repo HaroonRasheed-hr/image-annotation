@@ -72,6 +72,8 @@ source venv/bin/activate
 3. **Install dependencies**
 ```bash
 pip install -r requirements.txt
+# Optional: install YOLO inference dependencies for local inference
+pip install -r requirements-inference.txt
 ```
 
 4. **Run database migrations**

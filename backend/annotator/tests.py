@@ -1,6 +1,7 @@
 from django.test import TestCase
 from rest_framework.test import APIClient, APITestCase
 from rest_framework import status
+from unittest import skipUnless
 from django.core.files.uploadedfile import SimpleUploadedFile
 from PIL import Image as PILImage
 from io import BytesIO
@@ -9,7 +10,11 @@ import os
 import tempfile
 from .models import Image, Annotation
 from .yolo_utils import YOLOConverter
-from .services.inference import InferenceService
+
+try:
+    from .services.inference import InferenceService
+except (ImportError, OSError):
+    InferenceService = None
 
 
 class ImageAPITestCase(TestCase):
@@ -263,6 +268,7 @@ class YOLOConverterTestCase(TestCase):
             self.assertTrue(is_valid, f"Should be valid: {case}, Error: {error}")
 
 
+@skipUnless(InferenceService, 'YOLO inference dependencies are not installed')
 class InferenceServiceTestCase(TestCase):
     """Test cases for InferenceService"""
     
@@ -408,6 +414,7 @@ class InferenceServiceTestCase(TestCase):
         self.assertIsNot(model1, model2)
 
 
+@skipUnless(InferenceService, 'YOLO inference dependencies are not installed')
 class InferenceAPITestCase(APITestCase):
     """Test cases for Inference API endpoint"""
     
@@ -533,3 +540,13 @@ class InferenceAPITestCase(APITestCase):
         self.assertIsInstance(data['detection_count'], int)
         self.assertIsInstance(data['detections'], list)
         self.assertIsInstance(data['processing_time'], float)
+
+
+@skipUnless(InferenceService is None, 'YOLO inference dependencies are installed')
+class InferenceUnavailableAPITestCase(APITestCase):
+    def test_inference_returns_service_unavailable_without_dependencies(self):
+        response = self.client.post('/api/inference/', {})
+
+        self.assertEqual(response.status_code, status.HTTP_503_SERVICE_UNAVAILABLE)
+        self.assertFalse(response.data['success'])
+        self.assertIn('dependencies are not installed', response.data['message'])

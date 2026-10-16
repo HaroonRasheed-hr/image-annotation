@@ -66,7 +66,7 @@ def main():
     else:
         return
     
-    if run_command([pip_cmd, "install", "-r", "requirements.txt"], "Installing dependencies"):
+    if run_command([pip_cmd, "install", "-r", "requirements-inference.txt"], "Installing dependencies"):
         pass
     else:
         return

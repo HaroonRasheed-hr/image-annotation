@@ -157,7 +157,7 @@ Renders the image with bounding boxes using HTML5 Canvas
 1. **Install Dependencies:**
    ```bash
    cd backend
-   pip install -r requirements.txt
+   pip install -r requirements-inference.txt
    ```
 
 2. **Run Tests:**
@@ -347,13 +347,23 @@ RUN apt-get update && apt-get install -y \
     libsm6 libxext6 libxrender-dev \
     && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY requirements.txt requirements-inference.txt .
+RUN pip install --no-cache-dir -r requirements-inference.txt
 
 COPY . .
 
 CMD ["gunicorn", "backend.wsgi:application", "--bind", "0.0.0.0:8000"]
 ```
+
+### Vercel
+
+The PyTorch/CUDA dependency tree required by Ultralytics exceeds Vercel's
+500 MB serverless function limit. The default `requirements.txt` intentionally
+contains only the Django API dependencies, so Vercel can build the backend.
+The inference endpoint returns HTTP 503 while inference dependencies are not
+installed. To keep AI inference available, deploy it on a host that supports
+`requirements-inference.txt` and configure the application to reach that
+inference service.
 
 ## Future Enhancements
 
