@@ -82,8 +82,17 @@ if DEBUG:
 #   Production: ['yourdomain.com', 'www.yourdomain.com']
 # ============================================================================
 
-ALLOWED_HOSTS_STR = config('ALLOWED_HOSTS', default='127.0.0.1,localhost')
-ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS_STR.split(',') if host.strip()]
+DEFAULT_ALLOWED_HOSTS = [
+    'image-annotation-ssbe-iota.vercel.app',
+    '.vercel.app',
+    'localhost',
+    '127.0.0.1',
+]
+ALLOWED_HOSTS_STR = config('ALLOWED_HOSTS', default=','.join(DEFAULT_ALLOWED_HOSTS))
+ALLOWED_HOSTS = list(dict.fromkeys(
+    DEFAULT_ALLOWED_HOSTS
+    + [host.strip() for host in ALLOWED_HOSTS_STR.split(',') if host.strip()]
+))
 VERCEL_URL = os.environ.get('VERCEL_URL')
 if VERCEL_URL and VERCEL_URL not in ALLOWED_HOSTS:
     ALLOWED_HOSTS.append(VERCEL_URL)
@@ -149,10 +158,20 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+DATABASE_ENGINE = config('DB_ENGINE', default='django.db.backends.sqlite3')
+if DATABASE_ENGINE == 'django.db.backends.sqlite3':
+    DATABASE_NAME = config('DB_NAME', default=str(BASE_DIR / 'db.sqlite3'))
+else:
+    DATABASE_NAME = config('DB_NAME', default='')
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': DATABASE_ENGINE,
+        'NAME': DATABASE_NAME,
+        'USER': config('DB_USER', default=''),
+        'PASSWORD': config('DB_PASSWORD', default=''),
+        'HOST': config('DB_HOST', default=''),
+        'PORT': config('DB_PORT', default=''),
     }
 }
 
@@ -238,6 +257,9 @@ CORS_ALLOWED_ORIGINS = [origin.strip() for origin in CORS_ALLOWED_ORIGINS_STR.sp
 
 CORS_ALLOW_CREDENTIALS = True
 
+CSRF_TRUSTED_ORIGINS = ['https://*.vercel.app']
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 # ============================================================================
 # ADDITIONAL SECURITY SETTINGS FOR PRODUCTION
 # ============================================================================
@@ -266,7 +288,6 @@ SECURE_HSTS_PRELOAD = False  # Set to True only if your domain is on HSTS preloa
 
 # SSL/HTTPS Settings (for production)
 # Uncomment and configure these for production HTTPS deployment:
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # SESSION_COOKIE_SECURE = True  # Only send session cookie over HTTPS
 # CSRF_COOKIE_SECURE = True     # Only send CSRF cookie over HTTPS
 # SECURE_SSL_REDIRECT = True     # Redirect HTTP to HTTPS (when not in development)
